@@ -1,3 +1,4 @@
+from movie import Movie
 import os
 
 def load_movies(filename_parameter):
@@ -56,10 +57,6 @@ prompts the user for a valid choice."""
 #     with open () 
 
 
-def update_genre_name(list_of_movies_parameter):
-
-
-
 def main():
     filename_input = input("Enter the movie catalog filename: ")
 
@@ -71,7 +68,6 @@ def main():
     print(list_of_all_movies)
 
     # if :
-    
     # elif selected == "0":
 
     

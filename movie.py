@@ -32,7 +32,11 @@ class Movie:
   
 
     def get_availability(self):
-        pass
+        if self.available == "True":
+            self.available = "Available"
+        else:
+            self.available = "Rented"
+
 
     def borrow_movie(self):
         pass
