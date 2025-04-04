@@ -38,22 +38,28 @@ class Movie:
             self.__available = "Rented"
 
     def set_id(self, id):
-        if isinstance(id, int) and id.strip() != "":
+        if isinstance(id, int) and id > 0:
             self.__id = id
         else:
             print("Error! ID must be a valid integer.")
 
     def set_title(self, title):
-        if isinstance(id, str) and id.strip() != "":
+        if isinstance(title, str) and title.strip() != "":
             self.__title = title
         else:
             print("Error! Please enter a valid title.")
 
-    def set_title(self, director):
-        if isinstance(id, str) and id.strip() != "":
+    def set_director(self, director):
+        if isinstance(director, str) and director.strip() != "":
             self.__director = director
         else:
             print("Error! Please enter a valid director.")
+
+    def set_genre(self, genre):
+        if isinstance(genre, int) and genre in [0,1,2,3,4,5,6,7,8,9]:
+            self.__genre = genre
+        else:
+            print("Error! Please enter a valid genre.")
 
     def borrow_movie(self):
         pass
