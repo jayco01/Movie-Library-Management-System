@@ -61,6 +61,12 @@ class Movie:
         else:
             print("Error! Please enter a valid genre.")
 
+    def set_price(self, price):
+        if isinstance(price, float) and price >= 0:
+            self.__price = price
+        else:
+            print("Error! Please enter a valid price.")
+
     def borrow_movie(self):
         pass
 
