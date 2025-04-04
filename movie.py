@@ -47,7 +47,13 @@ class Movie:
         if isinstance(id, str) and id.strip() != "":
             self.__title = title
         else:
-            print("Error! ID must be a valid title.")
+            print("Error! Please enter a valid title.")
+
+    def set_title(self, director):
+        if isinstance(id, str) and id.strip() != "":
+            self.__director = director
+        else:
+            print("Error! Please enter a valid director.")
 
     def borrow_movie(self):
         pass
