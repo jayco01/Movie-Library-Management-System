@@ -33,10 +33,19 @@ prompts the user for a valid choice."""
     print("9) Check availability by genre")
     print("10) Display library summary")
     print("0) Exit the system")
-
+    list_of_options = ["1","2","3","4","5","6","7","8","9","10","0"]
     selected = input("Enter your selection: ")
+    while selected not in (list_of_options):
+        print("Invalid choice. Please try again.")
+        selected = input("Enter your selection: ")
 
     return selected
+
+
+# def search_movies(movies_parameter, search_term_parameter):
+#     movie_found = False
+
+#     for 
 
 
 
@@ -49,8 +58,6 @@ def main():
     print()
     print_menu()
     
-    
-
 
 if __name__ == "__main__":
     main()
