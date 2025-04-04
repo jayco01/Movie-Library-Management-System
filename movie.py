@@ -9,7 +9,27 @@ class Movie:
         self.__fine_rate = fine_rate
     
     def get_genre_name(self):
-        pass
+        if self.genre == "0":
+            self.genre = "Action"
+        if self.genre == "1":
+            self.genre = "Comedy"
+        if self.genre == "2":
+            self.genre = "Drama"
+        if self.genre == "3":
+            self.genre = "Horror"
+        if self.genre == "4":
+            self.genre = "Sci-Fi"
+        if self.genre == "5":
+            self.genre = "Romance"
+        if self.genre == "6":
+            self.genre = "Thriller"
+        if self.genre == "7":
+            self.genre = "Animation"
+        if self.genre == "8":
+            self.genre = "Documentary"
+        if self.genre == "9":
+            self.genre = "Fantasy"
+  
 
     def get_availability(self):
         pass

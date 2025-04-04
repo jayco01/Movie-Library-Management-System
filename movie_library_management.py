@@ -11,7 +11,7 @@ and returns them as a list of Movie objects."""
         return list_of_all_movies
     
 
-def save_movies(filename_parameter, movies_parameter):
+def save_movies(filename_parameter, list_of_movies_parameter):
     """Saves the list of Movie objects 
 to a CSV file."""
     pass
@@ -42,21 +42,38 @@ prompts the user for a valid choice."""
     return selected
 
 
-# def search_movies(movies_parameter, search_term_parameter):
+# def search_movies(list_of_movies_parameter, search_term_parameter):
+#     for search_term ==
+#         if search_term_parameter == 
+
+
+# def search_movies(list_of_movies_parameter, search_term_parameter):
 #     movie_found = False
 
 #     for 
 
+# def update_movie_details(list_of_movies_parameter):
+#     with open () 
+
+
+def update_genre_name(list_of_movies_parameter):
 
 
 
 def main():
     filename_input = input("Enter the movie catalog filename: ")
 
-    load_movies(filename_input)
+    list_of_all_movies = load_movies(filename_input)
 
     print()
-    print_menu()
+    selected = print_menu()
+
+    print(list_of_all_movies)
+
+    # if :
+    
+    # elif selected == "0":
+
     
 
 if __name__ == "__main__":
