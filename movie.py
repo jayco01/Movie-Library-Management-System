@@ -43,6 +43,12 @@ class Movie:
         else:
             print("Error! ID must be a valid integer.")
 
+    def set_title(self, title):
+        if isinstance(id, str) and id.strip() != "":
+            self.__title = title
+        else:
+            print("Error! ID must be a valid title.")
+
     def borrow_movie(self):
         pass
 
