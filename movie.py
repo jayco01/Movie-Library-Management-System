@@ -1,5 +1,5 @@
 class Movie:
-    def __init__(self,id,title,director,genre,available,price,fine_rate):
+    def __init__(self,id,title,director,genre,available,price,fine_rate,rental_count):
         self.__id = id
         self.__title = title
         self.__director = director
@@ -7,6 +7,7 @@ class Movie:
         self.__available = available
         self.__price = price
         self.__fine_rate = fine_rate
+        self.__rental_count = rental_count
     
     def get_genre_name(self):
         if self.__genre == "0":
@@ -68,7 +69,8 @@ class Movie:
             print("Error! Please enter a valid price.")
 
     def borrow_movie(self):
-        pass
+        self.__available = False
+        self.__rental_count += 1
 
     def return_movie(self):
         pass
