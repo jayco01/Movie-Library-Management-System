@@ -1,7 +1,6 @@
 import os
 
 def load_movies(filename_parameter):
-    pass
     """Loads movies from a CSV file 
 and returns them as a list of Movie objects."""
     if not os.path.exists(filename_parameter):
@@ -11,6 +10,13 @@ and returns them as a list of Movie objects."""
             list_of_all_movies = [line.strip().split(',') for line in read_file]
     return list_of_all_movies
     
+
+def save_movies(filename_parameter, movies_parameter):
+    """Saves the list of Movie objects 
+to a CSV file."""
+    pass
+
+
 
 
 def main():
