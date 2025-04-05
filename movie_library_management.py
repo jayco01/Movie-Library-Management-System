@@ -1,6 +1,15 @@
 from movie import Movie
 import os
 
+
+def create_movie_objects(list_of_movies_parameter):
+    movie_objects = []
+    for movie in list_of_movies_parameter:
+        movie_instance = Movie(*movie)
+        movie_objects.append(movie_instance)
+    return movie_objects
+
+
 def load_movies(filename_parameter):
     """Loads movies from a CSV file 
 and returns them as a list of Movie objects."""

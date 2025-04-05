@@ -1,11 +1,11 @@
 class Movie:
-    def __init__(self,id,title,director,genre,available,price,fine_rate,rental_count):
+    def __init__(self,id,title,director,genre,available,price,fine_rate=0,rental_count=0):
         self.__id = id
         self.__title = title
         self.__director = director
         self.__genre = genre
-        self.__available = available
-        self.__price = price
+        self.__available = bool(available)
+        self.__price = float(price)
         self.__fine_rate = fine_rate
         self.__rental_count = rental_count
     
@@ -76,7 +76,4 @@ class Movie:
         self.__available = True
 
     def __str__(self):
-        print(f"{self.__id:^15}{self.__title:<23}{self.__director:<22}{self.__genre:<11}{self.__available:<18}{self.__price:<12}{self.__rental_count:<19}")
-
-
-        
+        return f"{self.__id:^15}{self.__title:<25}{self.__director:<22}{self.__genre:<11}{self.__available:<18}{self.__price:<12}{self.__rental_count:<19}"
