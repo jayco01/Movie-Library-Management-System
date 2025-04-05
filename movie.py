@@ -73,10 +73,10 @@ class Movie:
         self.__rental_count += 1
 
     def return_movie(self):
-        pass
+        self.__available = True
 
     def __str__(self):
-        pass
+        print(f"{self.__id:^15}{self.__title:<23}{self.__director:<22}{self.__genre:<11}{self.__available:<18}{self.__price:<12}{self.__rental_count:<19}")
 
 
         
