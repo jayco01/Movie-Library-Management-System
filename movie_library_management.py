@@ -54,9 +54,12 @@ prompts the user for a valid choice."""
     return selected
 
 
-# def search_movies(list_of_movies_parameter, search_term_parameter):
-#     for search_term ==
-#         if search_term_parameter == 
+def search_movies(list_of_movies_parameter, search_term_parameter):
+    search_result = []
+    for movies in list_of_movies_parameter:
+        if search_term_parameter.lower() in movies[1].lower() or search_term_parameter.lower() in movies[2].lower() or search_term_parameter.lower() in movies[3].lower():
+            search_result.append(movies)
+    return search_result
 
 
 # def search_movies(list_of_movies_parameter, search_term_parameter):
