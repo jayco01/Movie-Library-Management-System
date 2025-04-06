@@ -9,6 +9,30 @@ class Movie:
         self.__fine_rate = float(fine_rate)
         self.__rental_count = int(rental_count)
     
+    def get_id(self):
+        return self.__id
+    
+    def get_title(self):
+        return self.__title
+    
+    def get_director(self):
+        return self.__director
+    
+    def get_genre(self):
+        return self.__genre
+    
+    def get_available_boolean(self):
+        return self.__available
+    
+    def get_price(self):
+        return self.__price
+    
+    def get_fine_rate(self):
+        return self.__fine_rate
+    
+    def get_rental_count(self):
+        return self.__rental_count
+    
     def get_genre_name(self):
         if self.__genre == "0":
             self.__genre = "Action"

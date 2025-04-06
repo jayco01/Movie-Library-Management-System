@@ -2,14 +2,6 @@ from movie import Movie
 import os
 
 
-# def create_movie_objects(list_of_movies_parameter):
-#     movie_objects = []
-#     for movie in list_of_movies_parameter:
-#         movie_instance = Movie(*movie)
-#         movie_objects.append(movie_instance)
-#     return movie_objects
-
-
 def load_movies(filename_parameter):
     """Loads movies from a CSV file 
 and returns them as a list of Movie objects."""
@@ -66,7 +58,21 @@ def search_movies(list_of_movies_parameter, search_term_parameter):
     return movie_objects_list
 
 
-
+def rent_movie(list_of_movies_parameter, movie_id_parameter): # I might have to add a functionality to update movie status as the movie is being rented
+    """Description: Rents a movie by its ID if it is 
+available. 
+"""
+    id_found = False
+    for movie in list_of_movies_parameter:
+        if movie.get_id() == movie_id_parameter and movie.get_available_boolean() == True:
+            id_found = True
+            movie.borrow_movie()
+            return f"You have successfully rented '{movie.get_title()}'."
+        elif movie.get_id() == movie_id_parameter and movie.get_available_boolean() == False:
+            id_found = True
+            return f"'Movie{movie.get_id()}' is already rented."
+    if id_found == False:
+        return f"Movie with ID {movie_id_parameter} not found."
 
 
 def main():
