@@ -58,7 +58,7 @@ def search_movies(list_of_movies_parameter, search_term_parameter):
     return movie_objects_list
 
 
-def rent_movie(list_of_movies_parameter, movie_id_parameter): # I might have to add a functionality to update movie status as the movie is being rented
+def rent_movie(list_of_movies_parameter, movie_id_parameter):
     """Description: Rents a movie by its ID if it is 
 available. 
 """
@@ -70,9 +70,24 @@ available.
             return f"You have successfully rented '{movie.get_title()}'."
         elif movie.get_id() == movie_id_parameter and movie.get_available_boolean() == False:
             id_found = True
-            return f"'Movie{movie.get_id()}' is already rented."
+            return f"'{movie.get_id()}' is already rented."
     if id_found == False:
         return f"Movie with ID {movie_id_parameter} not found."
+
+def return_movie(list_of_movies_parameter, movie_id_parameter):
+    """Returns a rented movie by its 
+ID."""
+    id_found = False
+    for movie in list_of_movies_parameter:
+        if movie.get_id() == movie_id_parameter and movie.get_available_boolean() == False:
+            id_found = True
+            movie.return_movie()
+            return f"You have successfully returned '{movie.get_title()}'."
+        elif movie.get_id() == movie_id_parameter and movie.get_available_boolean() == True:
+            id_found = True
+            return f"'{movie.get_title()}' was not rented."
+    if id_found == False:
+        return f"Movie with ID {movie_id_parameter} not found." 
 
 
 def main():
