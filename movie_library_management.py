@@ -2,12 +2,12 @@ from movie import Movie
 import os
 
 
-def create_movie_objects(list_of_movies_parameter):
-    movie_objects = []
-    for movie in list_of_movies_parameter:
-        movie_instance = Movie(*movie)
-        movie_objects.append(movie_instance)
-    return movie_objects
+# def create_movie_objects(list_of_movies_parameter):
+#     movie_objects = []
+#     for movie in list_of_movies_parameter:
+#         movie_instance = Movie(*movie)
+#         movie_objects.append(movie_instance)
+#     return movie_objects
 
 
 def load_movies(filename_parameter):
@@ -18,14 +18,18 @@ and returns them as a list of Movie objects."""
     else:
         with open(filename_parameter, 'r') as read_file:
             list_of_all_movies = [line.strip().split(',') for line in read_file]
-        return list_of_all_movies
-    
+        movie_objects = []
+        for movie in list_of_all_movies:
+            movie_instance = Movie(*movie)
+            movie_objects.append(movie_instance)
+        return movie_objects
 
-def save_movies(filename_parameter, list_of_movies_parameter):
+
+def save_movies(filename_parameter, movie_objects_list_parameter):
     """Saves the list of Movie objects 
 to a CSV file."""
     with open(filename_parameter, "w") as write_file:
-        for movie in list_of_movies_parameter:
+        for movie in movie_objects_list_parameter:
             write_file.write(",".join(movie) + "\n")
 
 
@@ -55,31 +59,24 @@ prompts the user for a valid choice."""
 
 
 def search_movies(list_of_movies_parameter, search_term_parameter):
-    search_result = []
+    movie_objects_list = []
     for movies in list_of_movies_parameter:
         if search_term_parameter.lower() in movies[1].lower() or search_term_parameter.lower() in movies[2].lower() or search_term_parameter.lower() in movies[3].lower():
-            search_result.append(movies)
-    return search_result
+            movie_objects_list.append(movies)
+    return movie_objects_list
 
 
-# def search_movies(list_of_movies_parameter, search_term_parameter):
-#     movie_found = False
 
-#     for 
-
-# def update_movie_details(list_of_movies_parameter):
-#     with open () 
 
 
 def main():
     filename_input = input("Enter the movie catalog filename: ")
 
-    list_of_all_movies = load_movies(filename_input)
+    list_of_movie_objects = load_movies(filename_input)
 
     print()
     selected = print_menu()
 
-    print(list_of_all_movies)
 
     # if :
     # elif selected == "0":
