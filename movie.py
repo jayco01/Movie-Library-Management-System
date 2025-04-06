@@ -6,8 +6,8 @@ class Movie:
         self.__genre = genre
         self.__available = bool(available)
         self.__price = float(price)
-        self.__fine_rate = fine_rate
-        self.__rental_count = rental_count
+        self.__fine_rate = float(fine_rate)
+        self.__rental_count = int(rental_count)
     
     def get_genre_name(self):
         if self.__genre == "0":
