@@ -90,6 +90,26 @@ ID."""
         return f"Movie with ID {movie_id_parameter} not found." 
 
 
+def add_movie(list_of_movies_parameter):
+    """Adds a new movie to the library 
+after prompting the user for details. """
+    input_id = input("Enter movie ID: ")
+    id_found = False
+    for movie in list_of_movies_parameter:
+        if movie.get_id() == input_id:
+            id_found = True
+            print(f"Movie with ID {input_id} exists")
+    
+    if id_found == False:
+        input_title = input("Enter title: ")
+        input_director = input("Enter director: ")
+        input_genre = input("Enter genre (0-9): ")
+        input_price = input("Enter price: ")
+        new_movie = Movie(input_id,input_title,input_director,input_genre,True,input_price)
+        list_of_movies_parameter.append(new_movie)
+        print(f"Movie '{input_title}' added successfully. ")
+
+
 def main():
     filename_input = input("Enter the movie catalog filename: ")
 
