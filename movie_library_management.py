@@ -109,6 +109,21 @@ after prompting the user for details. """
         list_of_movies_parameter.append(new_movie)
         print(f"Movie '{input_title}' added successfully. ")
 
+def remove_movie(list_of_movies_parameter):
+    """Removes a movie from the 
+library by its ID. Displays a message 
+confirming that the movie is removed, or the 
+movie is not found."""
+    input_id = input("Enter your selection: ")
+    id_found = False
+    for movie in list_of_movies_parameter:
+        if movie.get_id() == input_id:
+            id_found = True
+            list_of_movies_parameter.remove(movie)
+            print(f"Movie '{movie.get_title()}' has been removed.")
+    if id_found == False:
+        print(f"Movie with ID {input_id} not found.")
+
 
 def main():
     filename_input = input("Enter the movie catalog filename: ")
