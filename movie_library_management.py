@@ -99,6 +99,7 @@ after prompting the user for details. """
         if movie.get_id() == input_id:
             id_found = True
             print(f"Movie with ID {input_id} exists")
+            break
     
     if id_found == False:
         input_title = input("Enter title: ")
@@ -121,8 +122,43 @@ movie is not found."""
             id_found = True
             list_of_movies_parameter.remove(movie)
             print(f"Movie '{movie.get_title()}' has been removed.")
+            break
     if id_found == False:
         print(f"Movie with ID {input_id} not found.")
+
+
+def update_movie_detail(list_of_movies_parameter):
+    """Updates the details of a movie 
+by its ID. Displays a message confirming 
+that the movie is updated, or the movie is 
+not found. """
+    input_id = input("Enter your selection: ")
+    id_found = False
+    for movie in list_of_movies_parameter:
+        if movie.get_id() == input_id:
+            id_found = True
+            print("Leave fields blank to keep current values.")
+            input_title = input(f"Enter new title (current: {movie.get_title()}): ")
+            if input_title.strip() != "":
+                movie.set_title(input_title.strip())
+
+            input_director = input(f"Enter new director (current: {movie.get_director()}): ")
+            if input_director.strip() != "":
+                movie.set_director(input_director.strip())
+
+            input_genre = input(f"Enter new genre (current: {movie.get_genre()}): ")
+            if input_genre.strip() != "":
+                movie.set_genre(input_genre.strip())
+
+            input_price = input(f"Enter new price (current: {movie.get_price()}): ")
+            if input_price.strip() != "":
+                movie.set_price(float(input_price.strip()))
+
+            print(f"Movie with ID {input_id}' is updated successfully.")
+            break
+            
+    if id_found == False:
+        print(f"Movie with ID {input_id} is not found.")
 
 
 def main():
