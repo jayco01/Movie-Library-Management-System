@@ -1,4 +1,17 @@
 class Movie:
+    GENRES = {
+    "0": "Action",
+    "1": "Comedy",
+    "2": "Drama",
+    "3": "Horror",
+    "4": "Sci-Fi",
+    "5": "Romance",
+    "6": "Thriller",
+    "7": "Animation",
+    "8": "Documentary",
+    "9": "Fantasy"
+    }
+        
     def __init__(self,id,title,director,genre,available,price,fine_rate=0,rental_count=0):
         self.__id = id
         self.__title = title
@@ -34,26 +47,7 @@ class Movie:
         return self.__rental_count
     
     def get_genre_name(self):
-        if self.__genre == "0":
-            self.__genre = "Action"
-        if self.__genre == "1":
-            self.__genre = "Comedy"
-        if self.__genre == "2":
-            self.__genre = "Drama"
-        if self.__genre == "3":
-            self.__genre = "Horror"
-        if self.__genre == "4":
-            self.__genre = "Sci-Fi"
-        if self.__genre == "5":
-            self.__genre = "Romance"
-        if self.__genre == "6":
-            self.__genre = "Thriller"
-        if self.__genre == "7":
-            self.__genre = "Animation"
-        if self.__genre == "8":
-            self.__genre = "Documentary"
-        if self.__genre == "9":
-            self.__genre = "Fantasy"
+        return Movie.GENRES.get(self.__genre, "Unknown")
   
 
     def get_availability(self):
