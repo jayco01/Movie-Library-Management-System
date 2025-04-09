@@ -161,7 +161,29 @@ not found. """
         print(f"Movie with ID {input_id} is not found.")
 
 
-# def list_movies_by_genre():
+def list_movies_by_genre(list_of_movies_parameter):
+    """Lists all movies of a specified 
+genre. Displays a list of movies in the 
+specified genre, no movies found, or invalid 
+genre."""
+    genre_found = False
+    found_movies = []
+
+    selected_genre = input("Enter genre (0-9): ")
+    if int(selected_genre) < 0 or int(selected_genre) > 9:
+        print("Invalid Genre: Enter a valid genre (0-9)")
+        # break
+    for movie in list_of_movies_parameter:
+        if movie.get_genre() == selected_genre:
+            genre_found = True
+            found_movies.append(movie)
+    
+    if genre_found:
+        for movie in found_movies:
+            print(movie)
+    else:
+        print(f'There are no movies found for the selected genre.')
+        
 
 def main():
     filename_input = input("Enter the movie catalog filename: ")
