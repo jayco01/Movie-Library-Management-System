@@ -131,7 +131,7 @@ def update_movie_detail(list_of_movies_parameter):
     """Updates the details of a movie 
 by its ID. Displays a message confirming 
 that the movie is updated, or the movie is 
-not found. """
+not found."""
     input_id = input("Enter your selection: ")
     id_found = False
     for movie in list_of_movies_parameter:
@@ -162,10 +162,7 @@ not found. """
 
 
 def list_movies_by_genre(list_of_movies_parameter):
-    """Lists all movies of a specified 
-genre. Displays a list of movies in the 
-specified genre, no movies found, or invalid 
-genre."""
+    """Lists all movies of a specified genre. Displays a list of movies in the specified genre, no movies found, or invalid genre."""
     genre_found = False
     found_movies = []
 
@@ -210,6 +207,26 @@ def check_availability_by_genre(list_of_movies_parameter):
         print("There are no movies availalbe for the {selected_genre} genre.")
     else:
         print('There are no movies found for the {selected_genre} genre.')
+
+
+def diplay_library_summary(list_of_movies_parameter):
+    """Displays a summary of the library, including the total number of movies, number of available movies, and number of rented movies."""
+    total_movies = 0
+    available_movies = 0
+    rented_movies = 0
+
+    for movie in list_of_movies_parameter:
+        total_movies += 1
+        if movie.get_available_boolean() == True:
+            available_movies += 1
+        else:
+            rented_movies += 1
+
+    print(f"Total movies: {total_movies}")
+    print(f"Available movies: {available_movies}")
+    print(f"Rented movies: {rented_movies}")
+
+
 
 def main():
     filename_input = input("Enter the movie catalog filename: ")

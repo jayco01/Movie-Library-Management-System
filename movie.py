@@ -48,7 +48,6 @@ class Movie:
     
     def get_genre_name(self):
         return Movie.GENRES.get(self.__genre, "Unknown")
-  
 
     def get_availability(self):
         if self.__available == "True":
