@@ -228,13 +228,16 @@ def diplay_library_summary(list_of_movies_parameter):
 
 def top_rented_movies(list_of_movies_parameter):
     """Displays the top 5 most rented movies based on their rental count."""
+    top_5 = sorted(list_of_movies_parameter, key=lambda movie: movie.get_rental_count())
+
+    print_movies(top_5)
+
+def print_movies(list_of_movies_parameter):
+    """Helper function to find the index of a movie by its ID."""
     print("Top 5 Rented Movies:")
     print(f"{"ID":<11}{"Title":<26}{"Director":<21}{"Genre":<17}{"Rentals":<8}")
     print("-"*83)
-
-    top_5 = sorted(list_of_movies_parameter, key=lambda movie: movie.get_rental_count())
-
-    for movie in top_5:
+    for movie in list_of_movies_parameter:
         print(f"{movie.get_id():<11}{movie.get_title():<26}{movie.get_director():<21}{movie.get_genre():<17}{movie.get_rental_count():<8}")
 
 def main():
