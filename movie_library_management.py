@@ -226,11 +226,13 @@ def diplay_library_summary(list_of_movies_parameter):
     print(f"Available movies: {available_movies}")
     print(f"Rented movies: {rented_movies}")
 
+
 def top_rented_movies(list_of_movies_parameter):
     """Displays the top 5 most rented movies based on their rental count."""
     top_5 = sorted(list_of_movies_parameter, key=lambda movie: movie.get_rental_count())
 
     print_movies(top_5)
+
 
 def print_movies(list_of_movies_parameter):
     """Helper function to find the index of a movie by its ID."""
@@ -239,6 +241,18 @@ def print_movies(list_of_movies_parameter):
     print("-"*83)
     for movie in list_of_movies_parameter:
         print(f"{movie.get_id():<11}{movie.get_title():<26}{movie.get_director():<21}{movie.get_genre():<17}{movie.get_rental_count():<8}")
+
+def movie_index(list_of_movies_parameter, movie_id_parameter):
+    """Helper function to find the index of a movie by its ID."""
+    index = 0
+    for movie in list_of_movies_parameter:
+        index += 1
+        if movie.get_id() == movie_id_parameter:
+            break
+    if index > 0:
+        return index
+    else:
+        return None
 
 def main():
     filename_input = input("Enter the movie catalog filename: ")
