@@ -172,7 +172,6 @@ genre."""
     selected_genre = input("Enter genre (0-9): ")
     if int(selected_genre) < 0 or int(selected_genre) > 9:
         print("Invalid Genre: Enter a valid genre (0-9)")
-        # break
     for movie in list_of_movies_parameter:
         if movie.get_genre() == selected_genre:
             genre_found = True
@@ -183,7 +182,34 @@ genre."""
             print(movie)
     else:
         print(f'There are no movies found for the selected genre.')
-        
+
+
+def check_availability_by_genre(list_of_movies_parameter):
+    """Checks and displays the availability of movies in a specified genre. Displays a list of movies that are available"""
+
+    genre_found = False
+    available = False
+    found_movies = []
+
+    selected_genre = input("Enter genre (0-9): ")
+
+    if int(selected_genre) < 0 or int(selected_genre) > 9:
+        print("Invalid Genre: Enter a valid genre (0-9)")
+    for movie in list_of_movies_parameter:
+        if movie.get_genre() == selected_genre and movie.get_available_boolean() == True:
+            genre_found = True
+            available= True
+            found_movies.append(movie)
+        elif movie.get_genre() == selected_genre and movie.get_available_boolean() == False:
+            genre_found = True
+    
+    if genre_found and available:
+        for movie in found_movies:
+            print(movie)
+    elif genre_found and available == False:
+        print("There are no movies availalbe for the {selected_genre} genre.")
+    else:
+        print('There are no movies found for the {selected_genre} genre.')
 
 def main():
     filename_input = input("Enter the movie catalog filename: ")
