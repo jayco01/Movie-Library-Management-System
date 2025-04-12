@@ -46,15 +46,19 @@ prompts the user for a valid choice."""
     while selected not in (list_of_options):
         print("Invalid choice. Please try again.")
         selected = input("Enter your selection: ")
-
     return selected
 
 
 def search_movies(list_of_movies_parameter, search_term_parameter):
     movie_objects_list = []
+    found = False
+    print(f"Finding ({search_term_parameter}) in title, director, or genre...")
     for movies in list_of_movies_parameter:
         if search_term_parameter.lower() in movies[1].lower() or search_term_parameter.lower() in movies[2].lower() or search_term_parameter.lower() in movies[3].lower():
+            found = True
             movie_objects_list.append(movies)
+    if found == False:
+        print("No matching movies found.")
     return movie_objects_list
 
 
@@ -242,6 +246,7 @@ def print_movies(list_of_movies_parameter):
     for movie in list_of_movies_parameter:
         print(f"{movie.get_id():<11}{movie.get_title():<26}{movie.get_director():<21}{movie.get_genre():<17}{movie.get_rental_count():<8}")
 
+
 def movie_index(list_of_movies_parameter, movie_id_parameter):
     """Helper function to find the index of a movie by its ID."""
     index = 0
@@ -260,11 +265,11 @@ def main():
     list_of_movie_objects = load_movies(filename_input)
 
     print()
-    selected = print_menu()
+    selected = int(print_menu())
 
-
-    # if :
-    # elif selected == "0":
+    if selected == 1:
+        search_term = input("Enter search term: ")
+        search_movies(list_of_movie_objects, search_term)
 
     
 
