@@ -54,11 +54,11 @@ def search_movies(list_of_movies_parameter, search_term_parameter):
     found = False
     print(f"Finding ({search_term_parameter}) in title, director, or genre...")
     for movies in list_of_movies_parameter:
-        if search_term_parameter.lower() in movies[1].lower() or search_term_parameter.lower() in movies[2].lower() or search_term_parameter.lower() in movies[3].lower():
+        if search_term_parameter.lower() == movie.get_title().lower() or search_term_parameter.lower() == movies.get_director().lower() or search_term_parameter.lower() == movies.get_genre().lower():
             found = True
             movie_objects_list.append(movies)
     if found == False:
-        print("No matching movies found.")
+        return "No matching movies found."
     return movie_objects_list
 
 
