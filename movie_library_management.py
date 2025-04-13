@@ -270,6 +270,16 @@ def main():
         if selected == 1:
             search_term = input("Enter search term: ").strip()
             print(search_movies(list_of_movie_objects, search_term))
+        if selected == 2:
+            rent_movie_selected = input("Enter the movie ID to rent: ")
+            rent_movie(list_of_movie_objects,rent_movie_selected)
+        
+        if selected == 3:
+            return_movie_selected = input("Enter the movie ID to return: ")
+            return_movie(list_of_movie_objects,return_movie_selected)
+            
+        if selected == 10:
+            diplay_library_summary(list_of_movie_objects)
 
     
 
