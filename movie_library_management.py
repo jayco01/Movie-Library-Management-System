@@ -48,6 +48,8 @@ prompts the user for a valid choice."""
         selected = input("Enter your selection: ")
     return selected
 
+def label_columns():
+        print(f"{"ID":^15}{"Title":<25}{"Director":<22}{"Genre":<11}{"Availability":<18}{"Price $":<12}{"Rental Count":<19}")
 
 def search_movies(list_of_movies_parameter, search_term_parameter):
     """Searches for movies that match the search term."""
@@ -57,8 +59,9 @@ def search_movies(list_of_movies_parameter, search_term_parameter):
         if search_term_parameter.lower() in movies.get_title().lower() or search_term_parameter.lower() in movies.get_director().lower() or search_term_parameter.lower() in movies.get_genre_name().lower():
             movie_objects_list.append(movies)
     if len(movie_objects_list) == 0:
-        "No matching movies found."
-    else:
+        print("No matching movies found.")
+    if movie_objects_list != None:
+        label_columns()
         for movie in movie_objects_list:
             print(movie)
 
@@ -226,12 +229,12 @@ def diplay_library_summary(list_of_movies_parameter):
 def top_rented_movies(list_of_movies_parameter):
     """Displays the top 5 most rented movies based on their rental count."""
     top_5 = sorted(list_of_movies_parameter, key=lambda movie: movie.get_rental_count())
-    print("Top 5 Rented Movies:")
     print_movies(top_5)
 
 
 def print_movies(list_of_movies_parameter):
     """Helper function to find the index of a movie by its ID."""
+    print("Top 5 Rented Movies:")
     print(f"{"ID":<11}{"Title":<26}{"Director":<21}{"Genre":<17}{"Rentals":<8}")
     print("-"*83)
     for movie in list_of_movies_parameter:
@@ -259,39 +262,48 @@ def main():
     selected = None
     while selected != 0:
         selected = int(print_menu())
-        print()
         if selected == 1:
             search_term = input("Enter search term: ").strip()
-            print(search_movies(list_of_movie_objects, search_term)) 
-            
+            search_movies(list_of_movie_objects, search_term)
+            print()
+
         if selected == 2:
             rent_movie_selected = input("Enter the movie ID to rent: ")
             rent_movie(list_of_movie_objects,rent_movie_selected)
-        
+            print()
+
         if selected == 3:
             return_movie_selected = input("Enter the movie ID to return: ")
             print(return_movie(list_of_movie_objects,return_movie_selected))
+            print()
 
         if selected == 4:
             add_movie(list_of_movie_objects)
+            print()
 
         if selected == 5:
             remove_movie(list_of_movie_objects)
-        
+            print()
+
         if selected == 6:
             update_movie_detail(list_of_movie_objects)
-        
+            print()
+
         if selected == 7:
             list_movies_by_genre(list_of_movie_objects)
+            print()
 
         if selected == 8:
             top_rented_movies(list_of_movie_objects)
+            print()
 
         if selected == 9:
             check_availability_by_genre(list_of_movie_objects) 
-            
+            print()
+
         if selected == 10:
             diplay_library_summary(list_of_movie_objects)
+            print()
 
     if selected == 0:
         update_catalog = input("Would you like to update the catalog (yes/y, no/n)? ").lower
