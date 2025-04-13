@@ -50,6 +50,7 @@ prompts the user for a valid choice."""
 
 
 def search_movies(list_of_movies_parameter, search_term_parameter):
+    """Searches for movies that match the search term."""
     movie_objects_list = []
     print(f"Finding ({search_term_parameter}) in title, director, or genre...")
     for movies in list_of_movies_parameter:
@@ -63,9 +64,7 @@ def search_movies(list_of_movies_parameter, search_term_parameter):
 
 
 def rent_movie(list_of_movies_parameter, movie_id_parameter):
-    """Description: Rents a movie by its ID if it is 
-available. 
-"""
+    """Description: Rents a movie by its ID if it is available."""
     id_found = False
     for movie in list_of_movies_parameter:
         if movie.get_id() == movie_id_parameter and movie.get_available_boolean() == True:
@@ -95,8 +94,7 @@ ID."""
 
 
 def add_movie(list_of_movies_parameter):
-    """Adds a new movie to the library 
-after prompting the user for details. """
+    """Adds a new movie to the library after prompting the user for details. """
     input_id = input("Enter movie ID: ")
     id_found = False
     for movie in list_of_movies_parameter:
@@ -115,10 +113,7 @@ after prompting the user for details. """
         print(f"Movie '{input_title}' added successfully. ")
 
 def remove_movie(list_of_movies_parameter):
-    """Removes a movie from the 
-library by its ID. Displays a message 
-confirming that the movie is removed, or the 
-movie is not found."""
+    """Removes a movie from the library by its ID. Displays a message confirming that the movie is removed, or the movie is not found."""
     input_id = input("Enter your selection: ")
     id_found = False
     for movie in list_of_movies_parameter:
@@ -132,10 +127,7 @@ movie is not found."""
 
 
 def update_movie_detail(list_of_movies_parameter):
-    """Updates the details of a movie 
-by its ID. Displays a message confirming 
-that the movie is updated, or the movie is 
-not found."""
+    """Updates the details of a movie by its ID. Displays a message confirming that the movie is updated, or the movie is not found."""
     input_id = input("Enter your selection: ")
     id_found = False
     for movie in list_of_movies_parameter:
@@ -267,21 +259,47 @@ def main():
     selected = None
     while selected != 0:
         selected = int(print_menu())
+        print()
         if selected == 1:
             search_term = input("Enter search term: ").strip()
-            print(search_movies(list_of_movie_objects, search_term))
+            print(search_movies(list_of_movie_objects, search_term)) 
+            
         if selected == 2:
             rent_movie_selected = input("Enter the movie ID to rent: ")
             rent_movie(list_of_movie_objects,rent_movie_selected)
         
         if selected == 3:
             return_movie_selected = input("Enter the movie ID to return: ")
-            return_movie(list_of_movie_objects,return_movie_selected)
+            print(return_movie(list_of_movie_objects,return_movie_selected))
+
+        if selected == 4:
+            add_movie(list_of_movie_objects)
+
+        if selected == 5:
+            remove_movie(list_of_movie_objects)
+        
+        if selected == 6:
+            update_movie_detail(list_of_movie_objects)
+        
+        if selected == 7:
+            list_movies_by_genre(list_of_movie_objects)
+
+        if selected == 8:
+            top_rented_movies(list_of_movie_objects)
+
+        if selected == 9:
+            check_availability_by_genre(list_of_movie_objects) 
             
         if selected == 10:
             diplay_library_summary(list_of_movie_objects)
 
-    
+    if selected == 0:
+        update_catalog = input("Would you like to update the catalog (yes/y, no/n)? ").lower
+        if update_catalog == "yes" or update_catalog == "y":
+            save_movies(filename_input, list_of_movie_objects)
+            print("Movie catalog has been updated. Goodbye!")
+        else:
+            print("Movie catalog has not been updated. Goodbye!")
 
 if __name__ == "__main__":
     main()
