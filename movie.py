@@ -93,4 +93,4 @@ class Movie:
         self.__available = True
 
     def __str__(self):
-        return f"{self.__id:^15}{self.__title:<25}{self.__director:<22}{self.__genre:<11}{self.__available:<18}{self.__price:<12}{self.__rental_count:<19}"
+        return f"{self.__id:^15}{self.__title:<25}{self.__director:<22}{self.get_genre_name():<11}{self.__available:<18}{self.__price:<12}{self.__rental_count:<19}"

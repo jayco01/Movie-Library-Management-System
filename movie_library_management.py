@@ -51,15 +51,15 @@ prompts the user for a valid choice."""
 
 def search_movies(list_of_movies_parameter, search_term_parameter):
     movie_objects_list = []
-    found = False
     print(f"Finding ({search_term_parameter}) in title, director, or genre...")
     for movies in list_of_movies_parameter:
-        if search_term_parameter.lower() == movie.get_title().lower() or search_term_parameter.lower() == movies.get_director().lower() or search_term_parameter.lower() == movies.get_genre().lower():
-            found = True
+        if search_term_parameter.lower() in movies.get_title().lower() or search_term_parameter.lower() in movies.get_director().lower() or search_term_parameter.lower() in movies.get_genre_name().lower():
             movie_objects_list.append(movies)
-    if found == False:
-        return "No matching movies found."
-    return movie_objects_list
+    if len(movie_objects_list) == 0:
+        "No matching movies found."
+    else:
+        for movie in movie_objects_list:
+            print(movie)
 
 
 def rent_movie(list_of_movies_parameter, movie_id_parameter):
@@ -234,13 +234,12 @@ def diplay_library_summary(list_of_movies_parameter):
 def top_rented_movies(list_of_movies_parameter):
     """Displays the top 5 most rented movies based on their rental count."""
     top_5 = sorted(list_of_movies_parameter, key=lambda movie: movie.get_rental_count())
-
+    print("Top 5 Rented Movies:")
     print_movies(top_5)
 
 
 def print_movies(list_of_movies_parameter):
     """Helper function to find the index of a movie by its ID."""
-    print("Top 5 Rented Movies:")
     print(f"{"ID":<11}{"Title":<26}{"Director":<21}{"Genre":<17}{"Rentals":<8}")
     print("-"*83)
     for movie in list_of_movies_parameter:
@@ -265,11 +264,12 @@ def main():
     list_of_movie_objects = load_movies(filename_input)
 
     print()
-    selected = int(print_menu())
-
-    if selected == 1:
-        search_term = input("Enter search term: ")
-        search_movies(list_of_movie_objects, search_term)
+    selected = None
+    while selected != 0:
+        selected = int(print_menu())
+        if selected == 1:
+            search_term = input("Enter search term: ").strip()
+            print(search_movies(list_of_movie_objects, search_term))
 
     
 
