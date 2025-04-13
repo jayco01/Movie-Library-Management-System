@@ -60,7 +60,7 @@ def search_movies(list_of_movies_parameter, search_term_parameter):
             movie_objects_list.append(movies)
     if len(movie_objects_list) == 0:
         print("No matching movies found.")
-    if movie_objects_list != None:
+    else:
         label_columns()
         for movie in movie_objects_list:
             print(movie)
@@ -76,13 +76,12 @@ def rent_movie(list_of_movies_parameter, movie_id_parameter):
             return f"You have successfully rented '{movie.get_title()}'."
         elif movie.get_id() == movie_id_parameter and movie.get_available_boolean() == False:
             id_found = True
-            return f"'{movie.get_id()}' is already rented."
+            return f"'{movie.get_title()}' is already rented."
     if id_found == False:
         return f"Movie with ID {movie_id_parameter} not found."
 
 def return_movie(list_of_movies_parameter, movie_id_parameter):
-    """Returns a rented movie by its 
-ID."""
+    """Returns a rented movie by its ID."""
     id_found = False
     for movie in list_of_movies_parameter:
         if movie.get_id() == movie_id_parameter and movie.get_available_boolean() == False:
@@ -117,7 +116,7 @@ def add_movie(list_of_movies_parameter):
 
 def remove_movie(list_of_movies_parameter):
     """Removes a movie from the library by its ID. Displays a message confirming that the movie is removed, or the movie is not found."""
-    input_id = input("Enter your selection: ")
+    input_id = input("Enter the movie ID to remove: ")
     id_found = False
     for movie in list_of_movies_parameter:
         if movie.get_id() == input_id:
@@ -174,6 +173,7 @@ def list_movies_by_genre(list_of_movies_parameter):
             found_movies.append(movie)
     
     if genre_found:
+        label_columns()
         for movie in found_movies:
             print(movie)
     else:
@@ -200,6 +200,7 @@ def check_availability_by_genre(list_of_movies_parameter):
             genre_found = True
     
     if genre_found and available:
+        label_columns()
         for movie in found_movies:
             print(movie)
     elif genre_found and available == False:
@@ -269,7 +270,7 @@ def main():
 
         if selected == 2:
             rent_movie_selected = input("Enter the movie ID to rent: ")
-            rent_movie(list_of_movie_objects,rent_movie_selected)
+            print(rent_movie(list_of_movie_objects,rent_movie_selected))
             print()
 
         if selected == 3:
