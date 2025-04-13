@@ -50,6 +50,7 @@ prompts the user for a valid choice."""
 
 def label_columns():
         print(f"{"ID":^15}{"Title":<25}{"Director":<22}{"Genre":<11}{"Availability":<18}{"Price $":<12}{"Rental Count":<19}")
+        print("-"*122)
 
 def search_movies(list_of_movies_parameter, search_term_parameter):
     """Searches for movies that match the search term."""
@@ -130,7 +131,7 @@ def remove_movie(list_of_movies_parameter):
 
 def update_movie_detail(list_of_movies_parameter):
     """Updates the details of a movie by its ID. Displays a message confirming that the movie is updated, or the movie is not found."""
-    input_id = input("Enter your selection: ")
+    input_id = input("Enter the movie ID to update: ")
     id_found = False
     for movie in list_of_movies_parameter:
         if movie.get_id() == input_id:
@@ -144,7 +145,7 @@ def update_movie_detail(list_of_movies_parameter):
             if input_director.strip() != "":
                 movie.set_director(input_director.strip())
 
-            input_genre = input(f"Enter new genre (current: {movie.get_genre()}): ")
+            input_genre = input(f"Enter new genre (current: {movie.get_genre_name()}): ")
             if input_genre.strip() != "":
                 movie.set_genre(input_genre.strip())
 
@@ -177,7 +178,7 @@ def list_movies_by_genre(list_of_movies_parameter):
         for movie in found_movies:
             print(movie)
     else:
-        print(f'There are no movies found for the selected genre.')
+        print(f'Invalid Genre: Enter a valid genre (0-9)')
 
 
 def check_availability_by_genre(list_of_movies_parameter):
@@ -229,7 +230,7 @@ def diplay_library_summary(list_of_movies_parameter):
 
 def top_rented_movies(list_of_movies_parameter):
     """Displays the top 5 most rented movies based on their rental count."""
-    top_5 = sorted(list_of_movies_parameter, key=lambda movie: movie.get_rental_count())
+    top_5 = sorted(list_of_movies_parameter, key=lambda movie: movie.get_rental_count(), reverse=True)[:5]
     print_movies(top_5)
 
 
