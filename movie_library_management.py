@@ -132,33 +132,40 @@ def remove_movie(list_of_movies_parameter):
 
 def update_movie_detail(list_of_movies_parameter):
     """Updates the details of a movie by its ID. Displays a message confirming that the movie is updated, or the movie is not found."""
-    input_id = input("Enter the movie ID to update: ")
-    id_found = False
-    for movie in list_of_movies_parameter:
-        if movie.get_id() == input_id:
-            id_found = True
-            print("Leave fields blank to keep current values.")
-            input_title = input(f"Enter new title (current: {movie.get_title()}): ")
-            if input_title.strip() != "":
-                movie.set_title(input_title.strip())
+    input_id = input("Enter the movie ID to update: ").strip()
+    index = movie_index(list_of_movies_parameter, input_id)
 
-            input_director = input(f"Enter new director (current: {movie.get_director()}): ")
-            if input_director.strip() != "":
-                movie.set_director(input_director.strip())
-
-            input_genre = input(f"Enter new genre (current: {movie.get_genre_name()}): ")
-            if input_genre.strip() != "":
-                movie.set_genre(input_genre.strip())
-
-            input_price = input(f"Enter new price (current: {movie.get_price()}): ")
-            if input_price.strip() != "":
-                movie.set_price(float(input_price.strip()))
-
-            print(f"Movie with ID {input_id}' is updated successfully.")
-            break
-            
-    if id_found == False:
+    if index is None:
         print(f"Movie with ID {input_id} is not found.")
+        return
+
+    movie = list_of_movies_parameter[index]
+
+    print("Leave fields blank to keep current values.")
+
+    input_title = input(f"Enter new title (current: {movie.get_title()}): ").strip()
+    if input_title:
+        movie.set_title(input_title)
+
+    input_director = input(f"Enter new director (current: {movie.get_director()}): ").strip()
+    if input_director:
+        movie.set_director(input_director)
+
+    input_genre = input(f"Enter new genre (0-9) (current: {movie.get_genre_name()}): ").strip()
+    if input_genre:
+        if input_genre in Movie.GENRES:
+            movie.set_genre(input_genre)
+        else:
+            print("Invalid genre. Must be a number from 0 to 9.")
+
+    input_price = input(f"Enter new price (current: {movie.get_price()}): ").strip()
+    if input_price:
+        try:
+            movie.set_price(float(input_price))
+        except ValueError:
+            print("Invalid price. Must be a number.")
+
+    print(f"Movie with ID {input_id} has been successfully updated.")
 
 
 def list_movies_by_genre(list_of_movies_parameter):
