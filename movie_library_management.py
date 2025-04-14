@@ -68,32 +68,33 @@ def search_movies(list_of_movies_parameter, search_term_parameter):
 
 
 def rent_movie(list_of_movies_parameter, movie_id_parameter):
-    """Description: Rents a movie by its ID if it is available."""
-    id_found = False
-    for movie in list_of_movies_parameter:
-        if movie.get_id() == movie_id_parameter and movie.get_available_boolean() == True:
-            id_found = True
+    """Rents a movie by its ID if it is available."""
+    index = movie_index(list_of_movies_parameter, movie_id_parameter)
+
+    if index is not None:
+        movie = list_of_movies_parameter[index]
+        if movie.get_available_boolean():
             movie.borrow_movie()
             return f"You have successfully rented '{movie.get_title()}'."
-        elif movie.get_id() == movie_id_parameter and movie.get_available_boolean() == False:
-            id_found = True
+        else:
             return f"'{movie.get_title()}' is already rented."
-    if id_found == False:
+    else:
         return f"Movie with ID {movie_id_parameter} not found."
+
 
 def return_movie(list_of_movies_parameter, movie_id_parameter):
     """Returns a rented movie by its ID."""
-    id_found = False
-    for movie in list_of_movies_parameter:
-        if movie.get_id() == movie_id_parameter and movie.get_available_boolean() == False:
-            id_found = True
+    index = movie_index(list_of_movies_parameter, movie_id_parameter)
+
+    if index is not None:
+        movie = list_of_movies_parameter[index]
+        if not movie.get_available_boolean():
             movie.return_movie()
             return f"You have successfully returned '{movie.get_title()}'."
-        elif movie.get_id() == movie_id_parameter and movie.get_available_boolean() == True:
-            id_found = True
+        else:
             return f"'{movie.get_title()}' was not rented."
-    if id_found == False:
-        return f"Movie with ID {movie_id_parameter} not found." 
+    else:
+        return f"Movie with ID {movie_id_parameter} not found."
 
 
 def add_movie(list_of_movies_parameter):
@@ -114,7 +115,7 @@ def add_movie(list_of_movies_parameter):
         new_movie = Movie(input_id,input_title,input_director,input_genre,True,input_price)
         list_of_movies_parameter.append(new_movie)
         print(f"Movie '{input_title}' added successfully. ")
-        
+
 
 def remove_movie(list_of_movies_parameter):
     """Removes a movie from the library by its ID. Displays a message confirming that the movie is removed, or the movie is not found."""
@@ -127,7 +128,6 @@ def remove_movie(list_of_movies_parameter):
         print(f"Movie '{removed_movie.get_title()}' has been removed.")
     else:
         print(f"Movie with ID {input_id} not found.")
-
 
 
 def update_movie_detail(list_of_movies_parameter):
