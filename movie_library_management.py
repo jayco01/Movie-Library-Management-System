@@ -114,19 +114,20 @@ def add_movie(list_of_movies_parameter):
         new_movie = Movie(input_id,input_title,input_director,input_genre,True,input_price)
         list_of_movies_parameter.append(new_movie)
         print(f"Movie '{input_title}' added successfully. ")
+        
 
 def remove_movie(list_of_movies_parameter):
     """Removes a movie from the library by its ID. Displays a message confirming that the movie is removed, or the movie is not found."""
-    input_id = input("Enter the movie ID to remove: ")
-    id_found = False
-    for movie in list_of_movies_parameter:
-        if movie.get_id() == input_id:
-            id_found = True
-            list_of_movies_parameter.remove(movie)
-            print(f"Movie '{movie.get_title()}' has been removed.")
-            break
-    if id_found == False:
+    input_id = input("Enter the movie ID to remove: ").strip()
+
+    index = movie_index(list_of_movies_parameter, input_id)
+
+    if index is not None:
+        removed_movie = list_of_movies_parameter.pop(index)
+        print(f"Movie '{removed_movie.get_title()}' has been removed.")
+    else:
         print(f"Movie with ID {input_id} not found.")
+
 
 
 def update_movie_detail(list_of_movies_parameter):
@@ -244,16 +245,13 @@ def print_movies(list_of_movies_parameter):
 
 
 def movie_index(list_of_movies_parameter, movie_id_parameter):
-    """Helper function to find the index of a movie by its ID."""
     index = 0
     for movie in list_of_movies_parameter:
-        index += 1
         if movie.get_id() == movie_id_parameter:
-            break
-    if index > 0:
-        return index
-    else:
-        return None
+            return index
+        index += 1
+    return None
+
 
 def main():
     filename_input = input("Enter the movie catalog filename: ")
