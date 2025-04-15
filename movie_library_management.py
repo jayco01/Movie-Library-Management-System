@@ -222,12 +222,12 @@ def check_availability_by_genre(list_of_movies_parameter):
         for movie in found_movies:
             print(movie)
     elif genre_found and available == False:
-        print(f"There are no movies availalbe for the {selected_genre} genre.")
+        print(f"There are no movies available for the {selected_genre} genre.")
     else:
         print(f'There are no movies found for the {selected_genre} genre.')
 
 
-def diplay_library_summary(list_of_movies_parameter):
+def display_library_summary(list_of_movies_parameter):
     """Displays a summary of the library, including the total number of movies, number of available movies, and number of rented movies."""
     total_movies = 0
     available_movies = 0
@@ -318,7 +318,7 @@ def main():
             print()
 
         if selected == 10:
-            diplay_library_summary(list_of_movie_objects)
+            display_library_summary(list_of_movie_objects)
             print()
 
     if selected == 0:

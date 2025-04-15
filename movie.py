@@ -50,10 +50,8 @@ class Movie:
         return Movie.GENRES.get(self.__genre, "Unknown")
 
     def get_availability(self):
-        if self.__available == "True":
-            self.__available = "Available"
-        else:
-            self.__available = "Rented"
+        return "Available" if self.__available else "Rented"
+
 
     def set_id(self, id):
         if isinstance(id, str) and id.strip() != "":
