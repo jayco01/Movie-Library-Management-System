@@ -3,8 +3,7 @@ import os
 
 
 def load_movies(filename_parameter):
-    """Loads movies from a CSV file 
-and returns them as a list of Movie objects."""
+    """Loads movies from a CSV file and returns them as a list of Movie objects."""
     if not os.path.exists(filename_parameter):
          return print(f"The catalog file {filename_parameter} is not found\nThe movie library management system starts without catalog")
     else:
@@ -18,16 +17,24 @@ and returns them as a list of Movie objects."""
 
 
 def save_movies(filename_parameter, movie_objects_list_parameter):
-    """Saves the list of Movie objects 
-to a CSV file."""
+    """Saves the list of Movie objects to a CSV file."""
     with open(filename_parameter, "w") as write_file:
         for movie in movie_objects_list_parameter:
-            write_file.write(",".join(movie) + "\n")
+            line = ",".join([
+                str(movie.get_id()),
+                movie.get_title(),
+                movie.get_director(),
+                str(movie.get_genre()),
+                str(movie.get_available_boolean()),
+                str(movie.get_price()),
+                str(movie.get_fine_rate()),
+                str(movie.get_rental_count())
+            ])
+            write_file.write(line + "\n")
 
 
 def print_menu():
-    """Displays the main menu and 
-prompts the user for a valid choice."""
+    """Displays the main menu and prompts the user for a valid choice."""
     print("Movie Library - Main Menu")
     print("="*25)
     print("1) Search for movies")
@@ -48,9 +55,11 @@ prompts the user for a valid choice."""
         selected = input("Enter your selection: ")
     return selected
 
+
 def label_columns():
         print(f"{"ID":^15}{"Title":<25}{"Director":<22}{"Genre":<11}{"Availability":<18}{"Price $":<12}{"Rental Count":<19}")
         print("-"*122)
+
 
 def search_movies(list_of_movies_parameter, search_term_parameter):
     """Searches for movies that match the search term."""
@@ -213,9 +222,9 @@ def check_availability_by_genre(list_of_movies_parameter):
         for movie in found_movies:
             print(movie)
     elif genre_found and available == False:
-        print("There are no movies availalbe for the {selected_genre} genre.")
+        print(f"There are no movies availalbe for the {selected_genre} genre.")
     else:
-        print('There are no movies found for the {selected_genre} genre.')
+        print(f'There are no movies found for the {selected_genre} genre.')
 
 
 def diplay_library_summary(list_of_movies_parameter):
@@ -243,7 +252,7 @@ def top_rented_movies(list_of_movies_parameter):
 
 
 def print_movies(list_of_movies_parameter):
-    """Helper function to find the index of a movie by its ID."""
+    """Prints a list of movies in a formatted table."""
     print("Top 5 Rented Movies:")
     print(f"{"ID":<11}{"Title":<26}{"Director":<21}{"Genre":<17}{"Rentals":<8}")
     print("-"*83)
@@ -313,7 +322,7 @@ def main():
             print()
 
     if selected == 0:
-        update_catalog = input("Would you like to update the catalog (yes/y, no/n)? ").lower
+        update_catalog = input("Would you like to update the catalog (yes/y, no/n)? ").lower()
         if update_catalog == "yes" or update_catalog == "y":
             save_movies(filename_input, list_of_movie_objects)
             print("Movie catalog has been updated. Goodbye!")
