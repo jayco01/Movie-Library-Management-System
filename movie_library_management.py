@@ -57,7 +57,7 @@ def print_menu():
 
 
 def label_columns():
-        print(f"{"ID":^15}{"Title":<25}{"Director":<22}{"Genre":<11}{"Availability":<18}{"Price $":<12}{"Rental Count":<19}")
+        print(f"{'ID':^15}{'Title':<25}{'Director':<22}{'Genre':<11}{'Availability':<18}{'Price $':<12}{'Rental Count':<19}")
         print("-"*122)
 
 
