@@ -17,7 +17,7 @@ class Movie:
         self.__title = title
         self.__director = director
         self.__genre = genre
-        self.__available = bool(available)
+        self.__available = str(available).strip().lower() == "true"
         self.__price = float(price)
         self.__fine_rate = float(fine_rate)
         self.__rental_count = int(rental_count)
@@ -52,7 +52,6 @@ class Movie:
     def get_availability(self):
         return "Available" if self.__available else "Rented"
 
-
     def set_id(self, id):
         if isinstance(id, str) and id.strip() != "":
             self.__id = id
@@ -81,4 +80,4 @@ class Movie:
         self.__available = True
 
     def __str__(self):
-        return f"{self.__id:^15}{self.__title:<25}{self.__director:<22}{self.get_genre_name():<11}{self.__available:<18}{self.__price:<12}{self.__rental_count:<19}"
+        return f"{self.__id:^15}{self.__title:<25}{self.__director:<22}{self.get_genre_name():<11}{self.get_availability():<18}{self.__price:<12}{self.__rental_count:<19}"

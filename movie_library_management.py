@@ -5,7 +5,7 @@ import os
 def load_movies(filename_parameter):
     """Loads movies from a CSV file and returns them as a list of Movie objects."""
     if not os.path.exists(filename_parameter):
-         return print(f"The catalog file {filename_parameter} is not found\nThe movie library management system starts without catalog")
+         return print(f"The catalog file ({filename_parameter}) is not found\nThe movie library management system starts without catalog")
     else:
         with open(filename_parameter, 'r') as read_file:
             list_of_all_movies = [line.strip().split(',') for line in read_file]
