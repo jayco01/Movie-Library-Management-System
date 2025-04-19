@@ -160,7 +160,7 @@ def update_movie_detail(list_of_movies_parameter):
     if input_director:
         movie.set_director(input_director)
 
-    input_genre = input(f"Enter new genre (0-9) (current: {movie.get_genre_name()}): ").strip()
+    input_genre = input(f"Enter new genre (current: {movie.get_genre_name()}): ").strip()
     if input_genre:
         if input_genre in Movie.GENRES:
             movie.set_genre(input_genre)
