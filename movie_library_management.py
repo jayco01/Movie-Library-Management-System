@@ -174,7 +174,7 @@ def update_movie_detail(list_of_movies_parameter):
         except ValueError:
             print("Invalid price. Must be a number.")
 
-    print(f"Movie with ID {input_id} has been successfully updated.")
+    print(f"Movie with ID {input_id} is updated successfully.")
 
 
 def list_movies_by_genre(list_of_movies_parameter):
