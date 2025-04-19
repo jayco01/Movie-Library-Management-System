@@ -185,6 +185,7 @@ def list_movies_by_genre(list_of_movies_parameter):
     selected_genre = input("Enter genre (0-9): ")
     if int(selected_genre) < 0 or int(selected_genre) > 9:
         print("Invalid Genre: Enter a valid genre (0-9)")
+        return None
     for movie in list_of_movies_parameter:
         if movie.get_genre() == selected_genre:
             genre_found = True

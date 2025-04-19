@@ -425,5 +425,109 @@ Enter your selection:
 
 
 
-Test 8: Updating a Movie - Option 6
+            Test 8: Updating a Movie - Option 6
+
+Movie Library - Main Menu
+=========================
+1) Search for movies
+2) Rent a movie
+3) Return a movie
+4) Add a movie
+5) Remove a movie
+6) Update movie details
+7) List movies by genre
+8) Top rented movies
+9) Check availability by genre
+10) Display library summary
+0) Exit the system
+Enter your selection: 6
+Enter the movie ID to update: 12
+Movie with ID 12 is not found.
+
+Movie Library - Main Menu
+=========================
+1) Search for movies
+2) Rent a movie
+3) Return a movie
+4) Add a movie
+5) Remove a movie
+6) Update movie details
+7) List movies by genre
+8) Top rented movies
+9) Check availability by genre
+10) Display library summary
+0) Exit the system
+Enter your selection: 6
+Enter the movie ID to update: 11
+Leave fields blank to keep current values.
+Enter new title (current: Flight Risk):
+Enter new director (current: Mel Gibson): 
+Enter new genre (current: Action): 
+Enter new price (current: 7.9): 6.99
+Movie with ID 11 is updated successfully.
+
+Movie Library - Main Menu
+=========================
+1) Search for movies
+2) Rent a movie
+3) Return a movie
+4) Add a movie
+5) Remove a movie
+6) Update movie details
+7) List movies by genre
+8) Top rented movies
+9) Check availability by genre
+10) Display library summary
+0) Exit the system
+Enter your selection: 1
+Enter search term: mel
+Finding (mel) in title, director, or genre...
+      ID       Title                    Director              Genre      Availability      Price $     Rental Count
+--------------------------------------------------------------------------------------------------------------------------
+      11       Flight Risk              Mel Gibson            Action     Available         6.99        0
+
+
+
+            Test 9: List Movies By Genre - Option 7
+
+Movie Library - Main Menu
+=========================
+1) Search for movies
+2) Rent a movie
+3) Return a movie
+4) Add a movie
+5) Remove a movie
+6) Update movie details
+7) List movies by genre
+8) Top rented movies
+9) Check availability by genre
+10) Display library summary
+0) Exit the system
+Enter your selection: 7
+Enter genre (0-9): -1
+Invalid Genre: Enter a valid genre (0-9)
+
+Movie Library - Main Menu
+=========================
+1) Search for movies
+2) Rent a movie
+3) Return a movie
+4) Add a movie
+5) Remove a movie
+6) Update movie details
+7) List movies by genre
+8) Top rented movies
+9) Check availability by genre
+10) Display library summary
+0) Exit the system
+Enter your selection: 7
+Enter genre (0-9): 0
+      ID       Title                    Director              Genre      Availability      Price $     Rental Count       
+--------------------------------------------------------------------------------------------------------------------------
+       2       The Dark Knight          Christopher Nolan     Action     Available         6.99        0
+       7       Pulp Fiction             Quentin Tarantino     Action     Available         5.49        0
+      10       The Avengers             Joss Whedon           Action     Available         6.49        0
+      11       Fligt Risk               Mel Gibson            Action     Available         6.99        0
+
+
 
