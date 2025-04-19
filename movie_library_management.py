@@ -149,7 +149,6 @@ def update_movie_detail(list_of_movies_parameter):
         return
 
     movie = list_of_movies_parameter[index]
-
     print("Leave fields blank to keep current values.")
 
     input_title = input(f"Enter new title (current: {movie.get_title()}): ").strip()
@@ -169,12 +168,13 @@ def update_movie_detail(list_of_movies_parameter):
 
     input_price = input(f"Enter new price (current: {movie.get_price()}): ").strip()
     if input_price:
-        try:
+        if input_price.replace('.', '', 1).isdigit():
             movie.set_price(float(input_price))
-        except ValueError:
+        else:
             print("Invalid price. Must be a number.")
 
     print(f"Movie with ID {input_id} is updated successfully.")
+
 
 
 def list_movies_by_genre(list_of_movies_parameter):
